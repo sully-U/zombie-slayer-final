@@ -3,6 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>zombie_slayer_final</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Raylib_cs" Version="3.7.0.1" />
+  </ItemGroup>
 
 </Project>
