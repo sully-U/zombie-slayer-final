@@ -14,9 +14,9 @@ namespace zombie_slayer_final
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
             // Bricks
-            cast["bricks"] = new List<Actor>();
-
-            // for (int i = Constants.BRICK_SPACE; i < (800-Constants.BRICK_SPACE); i+= (Constants.BRICK_SPACE+Constants.BRICK_WIDTH))  // Outer loop
+            cast["zombies"] = new List<Actor>();
+            
+            // for (int i = 0; i < (800-Constants.BRICK_SPACE); i+= (Constants.BRICK_SPACE+Constants.BRICK_WIDTH))  // Outer loop
             // {
             //     // Code here executes once
             //     // for each outer loop cycle
@@ -25,27 +25,20 @@ namespace zombie_slayer_final
             //     {
             //         // The inner loop runs to completion
             //         // for each loop cycle of the outer loop
-            //         Brick brick = new Brick(i,j);
-            //         cast["bricks"].Add(brick);
+            //     Zombie zombie = new Zombie(400, 15);
+            //     cast["zombies"].Add(zombie);
             //     }
             // }
-
-            // The Ball (or balls if desired)
-            cast["bullets"] = new List<Actor>();
-
-            // TODO: Add your ball here
-            Bullet bullet = new Bullet(380, 520);
-            cast["bullets"].Add(bullet);
-            
 
 
             // The paddle
             cast["hunter"] = new List<Actor>();
 
             // TODO: Add your paddle here
-            Hunter hunter = new Hunter(375, 560);
+            Hunter hunter = new Hunter(Constants.MAX_X/2, Constants.MAX_Y/2);
             cast["hunter"].Add(hunter);
 
+            cast["bullets"] = new List<Actor>();
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
@@ -61,6 +54,12 @@ namespace zombie_slayer_final
 
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
             script["output"].Add(drawActorsAction);
+
+            HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
+            script["update"].Add(handleOffScreenAction);
+
+            SpawnAction spawnAction = new SpawnAction(outputService);
+            script["output"].Add(spawnAction);
             
             // HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
             // script["update"].Add(handleOffScreenAction);
@@ -69,8 +68,14 @@ namespace zombie_slayer_final
             MoveActorsAction moveActorsAction = new MoveActorsAction();
             script["update"].Add(moveActorsAction);
 
+            HordeAction hordeAction = new HordeAction();
+            script["update"].Add(hordeAction);
+
             ControlActorsAction controlActorsAction = new ControlActorsAction(inputService);
             script["input"].Add(controlActorsAction);
+            
+            ShootAction shootAction = new ShootAction(inputService);
+            script["input"].Add(shootAction);
 
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(physicsService);
             script["update"].Add(handleCollisionsAction);

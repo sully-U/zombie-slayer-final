@@ -11,7 +11,6 @@ namespace zombie_slayer_final.Scripting
     {
         PhysicsService _physicsService = new PhysicsService();
         AudioService _audioService = new AudioService();
-        int _points = 0;
 
         public HandleCollisionsAction(PhysicsService physicsService)
         {
@@ -24,13 +23,14 @@ namespace zombie_slayer_final.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             List<Actor> zombiesToRemove = new List<Actor>();
+            List<Actor> bulletsToRemove = new List<Actor>();
             List<Actor> bullets = cast["bullets"];
             Actor hunter = cast["hunter"][0]; 
             List<Actor> zombies = cast["zombies"];
 
             for (int i = 0; i < bullets.Count; i++)
             {
-            Bullet bullet = (Bullet)bullets[i];
+                Bullet bullet = (Bullet)bullets[i];
                 
                 foreach (Actor actor in zombies)
                 {
@@ -39,40 +39,48 @@ namespace zombie_slayer_final.Scripting
                     if (_physicsService.IsCollision(bullet, zombie))
                     {
                         zombiesToRemove.Add(zombie);
+                        bulletsToRemove.Add(bullet);
                         // _audioService.PlaySound(Constants.SOUND_BOUNCE);
                     
                     }
                     if (bullet.GetX() == zombie.GetRightEdge() && bullet.GetY() >= zombie.GetTopEdge() && bullet.GetY()<=zombie.GetBottomEdge())
                     {
                         zombiesToRemove.Add(zombie);
+                        bulletsToRemove.Add(bullet);
                         // _audioService.PlaySound(Constants.SOUND_BOUNCE);
                     }
-                    if (bullet.GetX() == (zombie.GetLeftEdge()-Constants.BULLET_WIDTH) && bullet.GetY() >= zombie.GetTopEdge() && bullet.GetY()<=zombie.GetBottomEdge())
+                    if (bullet.GetX()+bullet.GetWidth() == zombie.GetLeftEdge() && bullet.GetY() >= zombie.GetTopEdge() && bullet.GetY()<=zombie.GetBottomEdge())
                     {
                         zombiesToRemove.Add(zombie);
+                        bulletsToRemove.Add(bullet);
+                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                    }
+                    if (bullet.GetY() == zombie.GetBottomEdge() && bullet.GetX() >= zombie.GetLeftEdge() && bullet.GetX()<=zombie.GetRightEdge())
+                    {
+                        zombiesToRemove.Add(zombie);
+                        bulletsToRemove.Add(bullet);
+                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                    }
+                    if (bullet.GetY()+bullet.GetHeight() == zombie.GetTopEdge() && bullet.GetX() >= zombie.GetLeftEdge() && bullet.GetX()<=zombie.GetRightEdge())
+                    {
+                        zombiesToRemove.Add(zombie);
+                        bulletsToRemove.Add(bullet);
                         // _audioService.PlaySound(Constants.SOUND_BOUNCE);
                     }
                 }
 
             }
-
-        //     /// <summary>
-        //     /// Keeps track of ball and paddle interaction, once they have made contact 10 times, a new ball is added. 
-        //     /// </summary>
-    
-        //     if (_points == 10)
-        //     {
-        //         Ball ball = new Ball(400, 520);
-        //         cast["balls"].Add(ball);
-        //         _points = 0;
-        //     }
             /// <summary>
             /// Removes the brick from the screen
             /// </summary>
             foreach (Zombie zombie in zombiesToRemove)
             {
                 cast["zombies"].Remove(zombie);
-            }  
+            }
+            foreach (Bullet bullet in bulletsToRemove)
+            {
+                cast["bullets"].Remove(bullet);
+            } 
         }
 
 

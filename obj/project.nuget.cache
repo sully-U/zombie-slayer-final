@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "BeubdBTEYEGP6gh74zurF+ZBIAozhGAc039pagoDn1b4Fvqn+S4v8OYD8Dml8J7lvF1lM90+URAtyY29muxDgg==",
+  "dgSpecHash": "suVTuHkbmBFyZrMA1JRreBo19XCTXT94vLJBYAniOpKT3AtfVlIwr3CoifBhSqvgOQtUPjnTGVdDq0z8MHLIYA==",
   "success": true,
   "projectFilePath": "/Users/sullyu/Documents/CSE-210/zombie_slayer_final/zombie_slayer_final.csproj",
-  "expectedPackageFiles": [    "/Users/sullyu/.nuget/packages/raylib-cs/3.7.0.1/raylib-cs.3.7.0.1.nupkg.sha512",
-    "/Users/sullyu/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"],
+  "expectedPackageFiles": [
+    "/Users/sullyu/.nuget/packages/raylib-cs/3.7.0.1/raylib-cs.3.7.0.1.nupkg.sha512",
+    "/Users/sullyu/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

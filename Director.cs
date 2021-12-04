@@ -15,6 +15,7 @@ namespace zombie_slayer_final
     /// </summary>
     public class Director
     {
+        // Scoreboard _scoreBoard = new Scoreboard();
         private bool _keepPlaying = true;
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
@@ -49,6 +50,22 @@ namespace zombie_slayer_final
                         if (zombie.GetY() == hunter.GetY() && zombie.GetX() == hunter.GetX())
                         {
                             _keepPlaying = false;
+                        }
+                         if (hunter.GetX() == zombie.GetRightEdge() && hunter.GetY() >= zombie.GetTopEdge() && hunter.GetY()<=zombie.GetBottomEdge())
+                        {
+                            _keepPlaying = false;
+                        }
+                        if (hunter.GetX()+hunter.GetWidth() == zombie.GetLeftEdge() && hunter.GetY() >= zombie.GetTopEdge() && hunter.GetY()<=zombie.GetBottomEdge())
+                        {
+                            _keepPlaying = false;
+                        }
+                        if (hunter.GetY() == zombie.GetBottomEdge() && hunter.GetX() >= zombie.GetLeftEdge() && hunter.GetX()<=zombie.GetRightEdge())
+                        {
+                            _keepPlaying = false;
+                        }
+                        if (hunter.GetY()+hunter.GetHeight() == zombie.GetTopEdge() && hunter.GetX() >= zombie.GetLeftEdge() && hunter.GetX()<=zombie.GetRightEdge())
+                        {
+                        _keepPlaying = false; 
                         }
                     }
                 }

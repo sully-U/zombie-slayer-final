@@ -40,13 +40,17 @@ namespace zombie_slayer_final
 
         public const int ZOMBIE_SPACE = 5;
 
-        public const int HUNTER_SPEED = 15;
+        public const int HUNTER_SPEED = 8;
 
         public const int HUNTER_WIDTH = 24;
         public const int HUNTER_HEIGHT = 24;
 
         public const int BULLET_WIDTH = 8;
-        public const int BULLET_HEIGHT = 16;
+        public const int BULLET_HEIGHT = 8;
+        public const int BULLET_SPEED = 25;
+        public const int  DELAY_COUNTDOWN = 100;
+
+        
     }
 
 }

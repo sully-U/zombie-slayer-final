@@ -29,5 +29,21 @@ namespace zombie_slayer_final.Casting
                 _velocity = new Point(dx, dy);
                 _position = new Point (15, GetY());
         }
+        public void bottomBoundary()
+        {
+                int dx = _velocity.GetX();
+                int dy = _velocity.GetY();
+
+                _velocity = new Point(dx, dy);
+                _position = new Point (GetX(), Constants.MAX_Y-15-Constants.HUNTER_HEIGHT);
+        }
+        public void topBoundary()
+        {
+                int dx = _velocity.GetX();
+                int dy = _velocity.GetY();
+
+                _velocity = new Point(dx, dy);
+                _position = new Point (GetX(), 15);
+        }
     }
 }

@@ -4,12 +4,11 @@ namespace zombie_slayer_final.Casting
 {
     public class Zombie : Actor
     {
-        public Zombie (int x, int y)
+        public Zombie (Point p)
         {
             // SetImage(Constants.IMAGE_ZOMBIE);
 
-            Point position = new Point(x, y);
-            SetPosition(position);
+            SetPosition(p);
             SetWidth(Constants.ZOMBIE_WIDTH);
             SetHeight(Constants.ZOMBIE_HEIGHT);
         }
