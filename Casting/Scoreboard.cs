@@ -7,7 +7,6 @@ namespace zombie_slayer_final.Casting
         /// <summary>
         /// Class for the scoreboard actor in the game.
         /// </summary>
-        int _points = 0;
         public Scoreboard (int x, int y)
         {
 
