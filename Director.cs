@@ -15,6 +15,7 @@ namespace zombie_slayer_final
     /// </summary>
     public class Director
     {
+        AudioService _audioService = new AudioService();
         // Scoreboard _scoreBoard = new Scoreboard();
         private bool _keepPlaying = true;
         private Dictionary<string, List<Actor>> _cast;
@@ -42,6 +43,9 @@ namespace zombie_slayer_final
                 {
                     _keepPlaying = false;
                 }
+                /// <summary>
+                /// Sets game over condition if the zombies make contact with the hunter.
+                /// </summary>
 
                 foreach (Zombie zombie in _cast["zombies"])
                 {
@@ -49,28 +53,32 @@ namespace zombie_slayer_final
                     {
                         if (zombie.GetY() == hunter.GetY() && zombie.GetX() == hunter.GetX())
                         {
+                            _audioService.PlaySound(Constants.SOUND_OVER);
                             _keepPlaying = false;
                         }
                          if (hunter.GetX() == zombie.GetRightEdge() && hunter.GetY() >= zombie.GetTopEdge() && hunter.GetY()<=zombie.GetBottomEdge())
                         {
+                            _audioService.PlaySound(Constants.SOUND_OVER);
                             _keepPlaying = false;
                         }
                         if (hunter.GetX()+hunter.GetWidth() == zombie.GetLeftEdge() && hunter.GetY() >= zombie.GetTopEdge() && hunter.GetY()<=zombie.GetBottomEdge())
                         {
+                            _audioService.PlaySound(Constants.SOUND_OVER);
                             _keepPlaying = false;
                         }
                         if (hunter.GetY() == zombie.GetBottomEdge() && hunter.GetX() >= zombie.GetLeftEdge() && hunter.GetX()<=zombie.GetRightEdge())
                         {
+                            _audioService.PlaySound(Constants.SOUND_OVER);
                             _keepPlaying = false;
                         }
                         if (hunter.GetY()+hunter.GetHeight() == zombie.GetTopEdge() && hunter.GetX() >= zombie.GetLeftEdge() && hunter.GetX()<=zombie.GetRightEdge())
                         {
-                        _keepPlaying = false; 
+                            _audioService.PlaySound(Constants.SOUND_OVER);
+                            _keepPlaying = false; 
                         }
                     }
                 }
             }
-
             Console.WriteLine("Game over!");
         }
 

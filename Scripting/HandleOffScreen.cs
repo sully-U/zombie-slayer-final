@@ -14,7 +14,7 @@ namespace zombie_slayer_final.Scripting
         {
         }
         /// <summary>
-        /// Overrides the action of the balls to bounce correctly off the sides of the screen.
+        /// Overrides the action of the bullets and hunter to respond appropriately when touching the sides of the screen.
         /// </summary>
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {

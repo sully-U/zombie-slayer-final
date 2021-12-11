@@ -13,6 +13,9 @@ namespace zombie_slayer_final.Scripting
         public MoveActorsAction()
         {
         }
+        /// <summary>
+        /// Overrides the action of all actors to move them on the screen
+        /// </summary>
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {

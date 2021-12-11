@@ -10,11 +10,15 @@ namespace zombie_slayer_final.Scripting
     public class ShootAction : Action
     {
         InputService _inputService;
+        AudioService _audioService = new AudioService();
 
         public ShootAction(InputService inputService)
         {
             _inputService = inputService;
         }
+        /// <summary>
+        /// Overrides the action of the bullets to travel correctly when input is given
+        /// </summary>
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
@@ -29,6 +33,7 @@ namespace zombie_slayer_final.Scripting
                 Point velocity = bulletDirection.Scale(Constants.BULLET_SPEED);
                 bullet.SetVelocity(velocity);
                 cast["bullets"].Add(bullet);
+                _audioService.PlaySound(Constants.SOUND_SHOOT);
             }
             else if (_inputService.IsSPressed())
             {
@@ -36,6 +41,7 @@ namespace zombie_slayer_final.Scripting
                 Point velocity = bulletDirection.Scale(Constants.BULLET_SPEED);
                 bullet.SetVelocity(velocity);
                 cast["bullets"].Add(bullet);
+                _audioService.PlaySound(Constants.SOUND_SHOOT);
             }
             else if (_inputService.IsDPressed())
             {
@@ -43,6 +49,7 @@ namespace zombie_slayer_final.Scripting
                 Point velocity = bulletDirection.Scale(Constants.BULLET_SPEED);
                 bullet.SetVelocity(velocity);
                 cast["bullets"].Add(bullet);
+                _audioService.PlaySound(Constants.SOUND_SHOOT);
             }
             else if (_inputService.IsWPressed())
             {
@@ -50,15 +57,8 @@ namespace zombie_slayer_final.Scripting
                 Point velocity = bulletDirection.Scale(Constants.BULLET_SPEED);
                 bullet.SetVelocity(velocity);
                 cast["bullets"].Add(bullet);
+                _audioService.PlaySound(Constants.SOUND_SHOOT);
             } 
-            // if (_inputService.IsAPressed())
-            // {
-            //     Bullet bullet = new Bullet(hunter.GetX(), hunter.GetY());
-            //     bullet.shootLeft();
-            //     cast["bullets"].Add(bullet);
-            //     // _audioService.PlaySound(Constants.SOUND_BOUNCE);
-                
-            // }
             }
         }
     }

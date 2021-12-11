@@ -12,21 +12,26 @@ namespace zombie_slayer_final.Scripting
         PhysicsService _physicsService = new PhysicsService();
         AudioService _audioService = new AudioService();
 
+        int _kills = 0;
+
         public HandleCollisionsAction(PhysicsService physicsService)
         {
             _physicsService = physicsService;
         }
 
         /// <summary>
-        /// Overrides the action of the actors to move correctly
+        /// Overrides the action of the actors to interact when making contact by removing bullets/zombies and updating the scorboard
         /// </summary>
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            Actor scoreboard = cast["scoreboard"][0];
+
             List<Actor> zombiesToRemove = new List<Actor>();
             List<Actor> bulletsToRemove = new List<Actor>();
             List<Actor> bullets = cast["bullets"];
             Actor hunter = cast["hunter"][0]; 
             List<Actor> zombies = cast["zombies"];
+            scoreboard.SetText($"Kills: {_kills}");
 
             for (int i = 0; i < bullets.Count; i++)
             {
@@ -40,38 +45,47 @@ namespace zombie_slayer_final.Scripting
                     {
                         zombiesToRemove.Add(zombie);
                         bulletsToRemove.Add(bullet);
-                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                        _kills++;
+                        scoreboard.SetText($"Kills: {_kills}");
+                        _audioService.PlaySound(Constants.SOUND_ZOMBIE);
                     
                     }
                     if (bullet.GetX() == zombie.GetRightEdge() && bullet.GetY() >= zombie.GetTopEdge() && bullet.GetY()<=zombie.GetBottomEdge())
                     {
                         zombiesToRemove.Add(zombie);
                         bulletsToRemove.Add(bullet);
-                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                        _kills++;
+                        scoreboard.SetText($"Kills: {_kills}");
+                        _audioService.PlaySound(Constants.SOUND_ZOMBIE);
                     }
                     if (bullet.GetX()+bullet.GetWidth() == zombie.GetLeftEdge() && bullet.GetY() >= zombie.GetTopEdge() && bullet.GetY()<=zombie.GetBottomEdge())
                     {
                         zombiesToRemove.Add(zombie);
                         bulletsToRemove.Add(bullet);
-                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                        _kills++;
+                        scoreboard.SetText($"Kills: {_kills}");
+                        _audioService.PlaySound(Constants.SOUND_ZOMBIE);
                     }
                     if (bullet.GetY() == zombie.GetBottomEdge() && bullet.GetX() >= zombie.GetLeftEdge() && bullet.GetX()<=zombie.GetRightEdge())
                     {
                         zombiesToRemove.Add(zombie);
                         bulletsToRemove.Add(bullet);
-                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                        _kills++;
+                        scoreboard.SetText($"Kills: {_kills}");
+                        _audioService.PlaySound(Constants.SOUND_ZOMBIE);
                     }
                     if (bullet.GetY()+bullet.GetHeight() == zombie.GetTopEdge() && bullet.GetX() >= zombie.GetLeftEdge() && bullet.GetX()<=zombie.GetRightEdge())
                     {
                         zombiesToRemove.Add(zombie);
                         bulletsToRemove.Add(bullet);
-                        // _audioService.PlaySound(Constants.SOUND_BOUNCE);
+                        _kills++;
+                        scoreboard.SetText($"Kills: {_kills}");
+                        _audioService.PlaySound(Constants.SOUND_ZOMBIE);
                     }
                 }
-
             }
             /// <summary>
-            /// Removes the brick from the screen
+            /// Removes the zombies and bullets from the screen
             /// </summary>
             foreach (Zombie zombie in zombiesToRemove)
             {
@@ -80,7 +94,12 @@ namespace zombie_slayer_final.Scripting
             foreach (Bullet bullet in bulletsToRemove)
             {
                 cast["bullets"].Remove(bullet);
-            } 
+            }
+        
+        }
+        public string UpdateText()
+        {
+            return $"Kills: {_kills}";
         }
 
 

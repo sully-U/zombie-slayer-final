@@ -19,6 +19,7 @@ namespace zombie_slayer_final.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             _outputService.StartDrawing();
+            _outputService.DrawImage(0,0, Constants.IMAGE_BACKGROUND);
 
             foreach (List<Actor> group in cast.Values)
             {

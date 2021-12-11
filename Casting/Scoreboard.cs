@@ -1,46 +1,22 @@
-// using System;
+using System;
 
-// namespace zombie_slayer_final.Casting
-// {
-//     class Scoreboard : Actor
-//     {
-//         private int _kills = 0;
+namespace zombie_slayer_final.Casting
+{
+    class Scoreboard : Actor
+    {
+        /// <summary>
+        /// Class for the scoreboard actor in the game.
+        /// </summary>
+        int _points = 0;
+        public Scoreboard (int x, int y)
+        {
 
-//         public Scoreboard()
-//         {
-            
-//             _position = new Point(30, 10); 
-//             _width = 0;
-//             _height = 0;
-            
-//             UpdateText();
-//         }
+            Point position = new Point(x, y);
+            SetPosition(position);
+            SetWidth(50);
+            SetHeight(20);
+            HasText();
 
-//         /// <summary>
-//         /// Increments the points by the amount specified and updates the
-//         /// text.
-//         /// </summary>
-//         /// <param name="points"></param>
-//         public void AddPoints(int points)
-//         {
-//             _kills += points;
-//             UpdateText();
-//         }
-
-//         /// <summary> Gets the point value currently stored in _points
-//         /// <returns> Int: _points
-//         public int GetPoints(){
-//             return _kills;
-//         }
-
-//         /// <summary>
-//         /// Updates the text to reflect the new points amount.
-//         /// This should be called whenever the points are updated.
-//         /// </summary>
-//         private void UpdateText()
-//         {
-            
-//                 _text = $"Kills: {_kills}";
-//         }
-//     }
-// }
+        }
+    }
+}

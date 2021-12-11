@@ -4,15 +4,21 @@ namespace zombie_slayer_final.Casting
 {
     public class Hunter : Actor
     {
+        /// <summary>
+        /// Class for the hunter actor in the game.
+        /// </summary>
         public Hunter (int x, int y)
         {
-            // SetImage(Constants.IMAGE_HUNTER);
+            SetImage(Constants.IMAGE_HUNTER);
 
             Point position = new Point(x, y);
             SetPosition(position);
             SetWidth(Constants.HUNTER_WIDTH);
             SetHeight(Constants.HUNTER_HEIGHT);
         }
+        /// <summary>
+        /// Attributes of the Hunter Class to stay within the boundaries (top, bottom, left, right) of the screen
+        /// </summary>
                 public void rightBoundary()
         {
                 int dx = _velocity.GetX();

@@ -13,6 +13,9 @@ namespace zombie_slayer_final.Scripting
         public HordeAction()
         {
         }
+        /// <summary>
+        /// Overrides the action of the zombies' movement to track and follow the movement of the hunter
+        /// </summary>
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {

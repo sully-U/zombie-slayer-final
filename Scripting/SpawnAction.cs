@@ -9,40 +9,30 @@ namespace zombie_slayer_final.Scripting
     {
 
         private OutputService _outputService;
+        AudioService _audioService = new AudioService();
 
         public SpawnAction(OutputService outputService)
         {
             _outputService = outputService;
         }
+        /// <summary>
+        /// Overrides the action of the zombies to spawn at various locations and at a predetermined probability
+        /// </summary>
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             List<Actor> zombies = cast["zombies"];
 
             Point spawnTop = new Point(Constants.MAX_X/2, 20);
-            Point spawnBottom = new Point(Constants.MAX_X/2, Constants.MAX_Y-20);
+            Point spawnBottom = new Point(Constants.MAX_X/2, Constants.MAX_Y-40);
             Point spawnLeft = new Point(20, Constants.MAX_Y/2);
             Point spawnRight = new Point(Constants.MAX_X-20, Constants.MAX_Y/2);
-            Point spawnBottomRight = new Point(Constants.MAX_X-20, Constants.MAX_Y-20);
+            Point spawnBottomRight = new Point(Constants.MAX_X-20, Constants.MAX_Y-40);
             Point spawnTopRight = new Point(Constants.MAX_X-20, 20);
-            Point spawnBottomLeft = new Point(20, Constants.MAX_Y-20);
+            Point spawnBottomLeft = new Point(20, Constants.MAX_Y-40);
             Point spawnTopLeft = new Point(20, 20);
 
             Random randomGenerator = new Random();
             int random = randomGenerator.Next(100);
-
-            // for (int i = Constants.ZOMBIE_SPACE; i < (800-Constants.ZOMBIE_SPACE); i+= (Constants.ZOMBIE_SPACE+Constants.ZOMBIE_WIDTH))  // Outer loop
-            // {
-            //     // Code here executes once
-            //     // for each outer loop cycle
-
-            //     for (int j = 0; j < 200; j+=((Constants.ZOMBIE_SPACE*2)+Constants.ZOMBIE_HEIGHT))  // Inner loop
-            //     {
-            //         // The inner loop runs to completion
-            //         // for each loop cycle of the outer loop
-            //         Zombie zombie = new Zombie(i,j);
-            //         cast["zombies"].Add(zombie);
-            //     }
-            // }
 
             if (random <= 10)
             {
@@ -83,6 +73,7 @@ namespace zombie_slayer_final.Scripting
                 }
 
                 cast["zombies"].Add(zombie);
+                
             }
             else
             {

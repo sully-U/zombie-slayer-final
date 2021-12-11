@@ -15,13 +15,16 @@ namespace zombie_slayer_final
         public const int DEFAULT_FONT_SIZE = 20;
         public const int DEFAULT_TEXT_OFFSET = 4;
 
-        // public const string IMAGE_BRICK = "./Assets/brick-2.png";
-        // public const string IMAGE_PADDLE = "./Assets/bat.png";
-        // public const string IMAGE_BALL = "./Assets/ball.png";
+        public const string IMAGE_BULLET = "./Assets/BulletC5.png";
+        public const string IMAGE_HUNTER = "./Assets/hunter.png";
+        public const string IMAGE_ZOMBIE = "./Assets/zombie_2_36x54.png";
+        public const string IMAGE_BACKGROUND = "./Assets/background.png";
 
-        // public const string SOUND_START = "./Assets/start.wav";
-        // public const string SOUND_BOUNCE = "./Assets/boing.wav";
-        // public const string SOUND_OVER = "./Assets/over.wav";
+        public const string SOUND_START = "./Assets/start.wav";
+        public const string SOUND_OVER = "./Assets/Game Over.mp3";
+        public const string SOUND_ZOMBIE = "./Assets/zombie_sound.wav";
+        public const string SOUND_ZOMBIE_2 = "./Assets/zombie_sound2.wav";
+        public const string SOUND_SHOOT = "./Assets/fire.mp3";
 
         public const int BULLET_X = MAX_X / 2;
         public const int BULLET_Y = MAX_Y - 125;
@@ -36,7 +39,7 @@ namespace zombie_slayer_final
         public const int HUNTER_Y = MAX_Y / 2;
 
         public const int ZOMBIE_WIDTH = 24;
-        public const int ZOMBIE_HEIGHT = 24;
+        public const int ZOMBIE_HEIGHT = 36;
 
         public const int ZOMBIE_SPACE = 5;
 

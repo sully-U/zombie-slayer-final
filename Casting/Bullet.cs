@@ -4,9 +4,12 @@ namespace zombie_slayer_final.Casting
 {
     public class Bullet : Actor
     {
+        /// <summary>
+        /// Class for the bullet actor in the game.
+        /// </summary>
         public Bullet (int x, int y)
         {
-            // SetImage(Constants.IMAGE_BULLET);
+            SetImage(Constants.IMAGE_BULLET);
 
             Point position = new Point(x, y);
             SetPosition(position);
@@ -15,41 +18,5 @@ namespace zombie_slayer_final.Casting
             SetVelocity(_velocity);
             MoveNext();
         }
-        // public void shootUp()
-        //     {
-        //         int x = GetX();
-        //         int y = GetY();
-        //         int dx = _velocity.GetX();
-        //         int dy = _velocity.GetY();
-
-        //         _velocity = new Point(x, -dy);
-        //     }
-        // public void shootDown()
-        // {
-        //     int x = GetX();
-        //     int y = GetY();
-        //     int dx = _velocity.GetX();
-        //     int dy = _velocity.GetY();
-
-        //     _velocity = new Point(x, dy);
-        // }
-        // public void shootLeft()
-        // {
-        //     int x = GetX();
-        //     int y = GetY();
-        //     int dx = _velocity.GetX();
-        //     int dy = _velocity.GetY();
-
-        //     _velocity = new Point(-dx, y);
-        // }
-        // public void shootRight()
-        // {
-        //     int x = GetX();
-        //     int y = GetY();
-        //     int dx = _velocity.GetX();
-        //     int dy = _velocity.GetY();
-
-        //     _velocity = new Point(dx, y);
-        // }
     }
 }
