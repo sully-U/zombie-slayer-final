@@ -21,7 +21,7 @@ namespace zombie_slayer_final
         public const string IMAGE_BACKGROUND = "./Assets/background.png";
 
         public const string SOUND_START = "./Assets/start.wav";
-        public const string SOUND_OVER = "./Assets/Game Over.mp3";
+        public const string SOUND_OVER = "./Assets/Game_Over.mp3";
         public const string SOUND_ZOMBIE = "./Assets/zombie_sound.wav";
         public const string SOUND_ZOMBIE_2 = "./Assets/zombie_sound2.wav";
         public const string SOUND_SHOOT = "./Assets/fire.mp3";
